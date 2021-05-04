@@ -1,0 +1,31 @@
+syntax="proto3";
+
+option go_package = "memdb/datafiles/hash";
+
+package hash;
+
+message SetKeyRequest {
+    string Key  = 1;
+    string Payload = 2;
+}
+
+message SetKeyResponse {
+    int64 StatusCode = 1;
+}
+
+message GetKeyRequest {
+    string Key = 1;
+}
+
+message GetKeyResponse {
+    string Payload = 1;
+    int64 StatusCode = 2;
+}
+
+service SetKey {
+    rpc SetKey (SetKeyRequest) returns (SetKeyResponse);
+}
+
+service GetKey {
+    rpc GetKey (GetKeyRequest) returns (GetKeyResponse);
+}

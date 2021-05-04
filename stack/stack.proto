@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+option go_package = "memdb/datafiles/stack";
+
+package stack;
+
+message PushRequest {
+    string Name = 1;
+    string Payload = 2;
+}
+
+message PushResponse {
+    int64 StatusCode = 1;
+}
+
+message PopRequest {
+    string Name = 1;
+}
+
+message PopResponse {
+    string Payload = 1;
+    string Name = 2;
+    int64 StatusCode = 3;
+}
+
+message LengthRequest {
+    string Name = 1;
+}
+
+message LengthResponse {
+    int64 Length = 1;
+    string Name = 2;
+    int64 StatusCode = 3;
+}
+
+message DeleteRequest {
+    string Name = 1;
+}
+
+message DeleteResponse {
+    string Name = 1;
+    int64 StatusCode = 2;
+}
+
+service Push {
+    rpc Push(PushRequest) returns (PushResponse) {}
+}
+
+service Pop {
+    rpc Pop(PopRequest) returns (PopResponse) {}
+}
+
+service Length {
+    rpc Length (LengthRequest) returns (LengthResponse) {} 
+}
+
+service Delete {
+    rpc Delete (DeleteRequest) returns (DeleteResponse) {}
+}
