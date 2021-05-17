@@ -7,7 +7,7 @@ package hash;
 message SetKeyRequest {
     string Key  = 1;
     string Payload = 2;
-    int64 expiry = 3;
+    int64 Expiry = 3;
 }
 
 message SetKeyResponse {
